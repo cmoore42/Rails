@@ -180,6 +180,7 @@ public class GameSetupController {
             } catch (ConfigurationException e) {
                 // TODO: Fix this behavior, give more information?
                 // Simply exit
+            	e.printStackTrace();
                 System.exit(-1);
             }
 

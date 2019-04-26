@@ -235,6 +235,13 @@ Known Issues:
    (c) 199x Leonhard Orgler    </Description>
    <Players minimum = "3" maximum = "7" />
    </Game>
+   
+   <Game name="1861">
+        <Note>Prototype - Not Playable</Note>
+        <Description>1861 - The railways of the Russian Empire
+		</Description>
+        <Players minimum="3" maximum="6"/>
+    </Game>
 
 
   <Game name="1862">

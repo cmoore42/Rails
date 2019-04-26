@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<ComponentManager>
+	<Component name="GameManager" class="net.sf.rails.game.GameManager">
+		<Game name="1861"/>
+		<!-- GAME OPTIONS must have:
+			- a name, which must also exist as an entry in LocalText.properties,
+			- optionally 'type="toggle"', which has the effect that the
+			  selection uses a checkbox instead of a dropdown list.
+			  In this case, 'values' must be absent 
+			  (the allowed values are fixed to "yes,no").
+			- optionally, 'values="a,b,c"' i,e, a list of allowed values.
+			- optionally, a default value (only affects a toggle;
+			  in a dropdown the first item is always the default).
+		-->
+		<!-- The options in Game.xml are not currently used.
+			 See GamesList.xml for the real ones.
+		--> 
+		<GameParameters>
+			<PlayerShareLimit percentage="60">
+			</PlayerShareLimit>			
+			<BankPoolLimit percentage="50"/>
+			<StockRound sequence="SellBuyOrBuySell">
+				<NoSaleInFirstSR/>
+			</StockRound>
+			<OperatingRound class="net.sf.rails.game.OperatingRound">
+            </OperatingRound>
+		</GameParameters>
+		<EndOfGame>
+			<ForcedSelling CompanyDump="no"/>
+			<Bankruptcy/>
+			<BankBreaks limit="0" finish="setOfORs"/>
+			<!-- "Runs out"; when "broken", -1 is the limit -->
+		</EndOfGame>
+	</Component>
+	<Component name="PlayerManager" class="net.sf.rails.game.PlayerManager">
+		<Players number="3" cash="420" certLimit="21"/>
+		<Players number="4" cash="315" certLimit="16"/>
+		<Players number="5" cash="252" certLimit="13"/>
+		<Players number="6" cash="210" certLimit="11"/>
+	</Component>
+	<Component name="Bank" class="net.sf.rails.game.financial.Bank">
+		<Bank amount="15000"/>
+		<Money format="R@"/>
+	</Component>
+	<Component name="TileManager" class="net.sf.rails.game.TileManager" 
+		file="TileSet.xml"/>
+	<Component name="Map" class="net.sf.rails.game.MapManager" file="Map.xml"/>
+    <Component name="CompanyManager" class="net.sf.rails.game.CompanyManager" 
+		file="CompanyManager.xml"/>
+	<Component name="StockMarket" class="net.sf.rails.game.financial.StockMarket" 
+		file="StockMarket.xml"/>
+	<Component name="TrainManager" class="net.sf.rails.game.TrainManager">
+		<Defaults>
+			<Reach base="stops" countTowns="yes"/>
+			<!-- Alternative values: 
+				base="hexes" for H-trains as in 1826, 1849 etc.
+				countTowns="no" for all trains in 1841, 18EU, etc.,
+				  where towns score but do not count against the train length.
+				  Otherwise, towns are counted as minor or major stops,
+				  depending on the presence or absence of a "minorStops" value.
+			-->
+			<Score towns="yes"/>
+			<!-- Alternative values:
+				towns="no" for trains that ignore towns (e.g. 1826 TGV).
+				cities="double" if city-revenue is doubled (e.g. 1826 TGV).
+			-->
+		</Defaults>
+		<TrainType name="2" majorStops="2" cost="100" quantity="10"/>
+		<TrainType name="3" majorStops="3" cost="225" quantity="7">
+            <NewPhase phaseName="3"/>
+        </TrainType>
+		<TrainType name="4" majorStops="4" cost="350" quantity="4">
+            <NewPhase phaseName="4"/>
+        </TrainType>
+		<TrainType name="5" majorStops="5" cost="550" quantity="4">
+            <NewPhase phaseName="5"/>
+        </TrainType>
+		<TrainType name="6" majorStops="6" cost="650" quantity="2">
+            <NewPhase phaseName="6"/>
+        </TrainType>
+        <TrainType name="7" majorStops="7" cost="800" quantity="2">
+            <NewPhase phaseName="7"/>
+        </TrainType>
+        <TrainType name="8" majorStops="8" cost="1000" quantity="6">
+            <NewPhase phaseName="8"/>
+        </TrainType>
+	</Component>
+	<Component name="PhaseManager" class="net.sf.rails.game.specific._1861.PhaseManager_1861">
+		<!-- Note: released and rusted trains are now specified per TrainType
+			but could as well be moved here. To be sorted out when we do 18US. -->
+		<!-- Each Phase's defaults are the previous one's values -->
+		<Phase name="2" >
+			<Tiles colour="yellow"/>
+			<Privates sellingAllowed="no"/>
+			<OperatingRounds number="2"/>
+			<Trains tradingAllowed="yes"/>
+		</Phase>
+		<Phase name="3">
+			<Tiles colour="yellow,green"/>
+			<Privates sellingAllowed="yes"/>
+		</Phase>
+		<Phase name="4">
+			<Trains rusted="2" limitStep="2"/>
+			<OffBoardRevenue step="2"/>
+		</Phase>
+		<Phase name="5">
+			<Tiles colour="yellow,green,brown"/>
+            <Trains limitStep="3"/>
+			<Privates sellingAllowed="no" close="yes" revenueStep="2"/> <!--G increases revenue and does not close - if owned by player-->
+			<OffBoardRevenue step="3"/>
+		</Phase>
+		<Phase name="6">
+            <Trains rusted="3" />
+            <OffBoardRevenue step="4"/>
+		</Phase>
+		<Phase name="7">
+		</Phase>
+		<Phase name="8">
+		</Phase>
+	</Component>
+</ComponentManager>

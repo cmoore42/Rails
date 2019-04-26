@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<CompanyManager>
+	<CompanyType name="Private" class="net.sf.rails.game.PrivateCompany">
+		<Tradeable toCompany="yes" lowerPriceFactor="0.5" upperPriceFactor="2.0"/>
+	</CompanyType>
+	<CompanyType name="Minor" class="net.sf.rails.game.PrivateCompany">
+		<ShareUnit percentage="50"/>
+		<Certificate type="Owner" shares="2"/>
+		<BaseTokens>
+			<HomeBase lay="whenStarted"/>
+		</BaseTokens>
+		<Trains limit="2,1"/>
+	</CompanyType>
+	<CompanyType name="Public" class="net.sf.rails.game.PublicCompany">
+		<CanBuyPrivates/>
+		<PoolPaysOut/>
+		<Float percentage="50"/>
+		<ShareUnit percentage="10"/>
+        <BaseTokens>
+			<!-- HomeBase lay options: "whenStarted", "whenFloated", "firstOR" (default) -->
+`		    <HomeBase lay="firstOR"/>
+			<!-- LayCost methods: only "sequence" (1830 style) implemented so far (default) -->
+	        <LayCost method="sequence" cost="0,40"/>
+        </BaseTokens>
+		<Certificate type="Director" shares="2"/>
+		<Certificate shares="1" number="8"/>
+		<Trains limit="4,3,2"/>
+        <CanUseSpecialProperties/>
+	</CompanyType>
+
+		
+	<!-- Note two supported colour specification formats:
+		RGB decimal with commas and RGB hexadecimal without commas -->
+	<Company name="GR" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="NW" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="SW" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="SE" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="MK" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="MVR" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="MKV" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="MKN" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	</Company>
+	<Company name="N" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="G8" />
+	</Company>
+	<Company name="StP-W" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="D1" />
+	</Company>
+	<Company name="M-NN" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="G8" />
+	</Company>
+	<Company name="R-O" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="A4" />
+	</Company>
+	<Company name="O-K" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="C20" />
+	</Company>
+	<Company name="M-K" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="G8" />
+	</Company>
+	<Company name="K-K" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="C14" />
+	</Company>
+	<Company name="M-V" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="H13" />
+	</Company>
+	<Company name="K-B" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="C14" />
+	</Company>
+	<Company name="K-R" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="F15" />
+	</Company>
+	<Company name="M-B" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="D9" />
+	</Company>
+	<Company name="D" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="G18" />
+	</Company>
+	<Company name="V" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="H19" />
+	</Company>
+	<Company name="T-R" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="J17" />
+	</Company>
+	<Company name="S-V" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="M10" />
+	</Company>
+	<Company name="E" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+		<Home hex="P3" />
+	</Company>
+
+	<StartPacket roundClass="net.sf.rails.game.specific._1861.StartRound_1861">
+		<Item name="Tsarakoye Selo Railway" type="Private" minBid="20" faceValue="30" revenue="10" />
+		<Item name="Black Sea Shipping Company" type="Private" minBid="30" faceValue="45" revenue="15" />
+		<Item name="Moscow Yaroslavl Railway" type="Private" minBid="40" faceValue="60" revenue="20" />
+		<Item name="Moscow Ryazan Railway" type="Private" minBid="50" faceValue="75" revenue="25" />
+		<Item name="Warsaw Vienna Railway" type="Private" minBid="60" faceValue="90" revenue="30" />
+	</StartPacket>
+</CompanyManager>

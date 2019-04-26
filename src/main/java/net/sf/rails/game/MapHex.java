@@ -310,6 +310,11 @@ public class MapHex extends RailsModel implements RailsOwner, Configurable {
 
         reservedForCompany = getRoot().getCompanyManager().getPublicCompany(
                 reservedForCompanyName);
+        
+        log.debug("finishConfiguration for " + this.toString());
+        log.debug("currentTile is " + currentTile);;
+        log.debug("currentTile.value() is " + currentTile.value());
+        log.debug("currentTile.value().getStations() is " + currentTile.value().getStations());
 
         // We need completely new objects, not just references to the Tile's
         // stations.
