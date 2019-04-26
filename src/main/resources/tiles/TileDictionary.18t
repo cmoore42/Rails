@@ -18134,5 +18134,26 @@ object TTilesWrapper
           Revenue = 10
           RevenuePosition = tp3SideE
         end>
+    end
+    item
+      Code = -61009
+      LongName = '-61009'
+      Level = tlMapUpgradableToGreen
+      Connections = <
+        item
+          Position1 = tp4SideD
+          Position2 = tp1SideE
+        end
+        item
+          Position1 = tp4SideF
+          Position2 = tp1SideE
+        end>
+      Junctions = <
+        item
+          JunType = jtWhistlestop
+          Position = tp1SideE
+          Revenue = 10
+          RevenuePosition = tp3CornerB
+        end>
     end>
 end

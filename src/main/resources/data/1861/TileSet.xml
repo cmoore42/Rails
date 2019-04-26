@@ -18,6 +18,9 @@
 	<Tile id="-10"><!-- 1 city -->
 		<Upgrade id="5,6,57"/>
 	</Tile>
+	<Tile id="-3007"><!-- Y city -->
+		<Upgrade id="201,202,621"/>	
+	</Tile>
 	<Tile id="-61001"><!-- Kharkov -->
 		<Upgrade id="201,202,621"/>
 	</Tile>
@@ -26,9 +29,8 @@
 	<Tile id="-61002"/> <!-- Moscow -->
 	<Tile id="-61003"/> <!-- Kiev -->
 	<Tile id="-61004"/> <!-- Nizhnii Novgrod -->
-	<Tile id="-61005"/> <!-- Ekaterinburg -->
 	<Tile id="-61006"/> <!-- Shallow curve -->
-	<Tile id="-37158"/> <!-- Shallow curve with town -->
+	<Tile id="-61009"/> <!-- Shallow curve with town -->
 	
 	<!-- 	Map: Upgradeable to brown -->
 	<Tile id="-61007"/> <!-- St Petersburg -->

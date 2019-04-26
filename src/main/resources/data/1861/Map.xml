@@ -61,7 +61,7 @@
 	<Hex name="F19" tile="-10"/>
 	<Hex name="F21" tile="0"/>
 	<Hex name="G4" tile="0"/>
-	<Hex name="G6" tile="-37158"/>
+	<Hex name="G6" tile="-61009"/>
 	<Hex name="G8" tile="-61006"/>
 	<Hex name="G10" tile="0"/>
 	<Hex name="G12" tile="0"/>
@@ -139,7 +139,7 @@
 	<Hex name="O10" tile="0"/>
 	<Hex name="O12" tile="0"/>
 	<Hex name="P1" tile="-7"/>
-	<Hex name="P3" tile="10"/>
+	<Hex name="P3" tile="-10"/>
 	<Hex name="P5" tile="0"/>
 	<Hex name="P7" tile="0"/>
 	<Hex name="P9" tile="-10"/>

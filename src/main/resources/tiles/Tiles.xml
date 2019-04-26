@@ -3303,7 +3303,7 @@
 <Track from="city1" gauge="normal" to="side4"/>
 <Track from="city1" gauge="normal" to="side2"/>
 </Tile>
-<Tile colour="green" id="-89015" name="1889 Kouchi F9">
+<Tile colour="green" id="-89015" name="1889 Kouchi  F9">
 <Station id="city1" position="0" slots="2" type="City" value="30"/>
 <Track from="city1" gauge="normal" to="side0"/>
 <Track from="city1" gauge="normal" to="side5"/>
@@ -4366,5 +4366,10 @@
 <Track from="side1" gauge="normal" to="side3"/>
 <Track from="side2" gauge="normal" to="city1"/>
 <Track from="city1" gauge="normal" to="side5"/>
+</Tile>
+<Tile colour="yellow" id="-61009" name="-61009">
+<Station id="city1" position="401" type="Town" value="10"/>
+<Track from="side3" gauge="normal" to="city1"/>
+<Track from="side5" gauge="normal" to="city1"/>
 </Tile>
 </Tiles>
