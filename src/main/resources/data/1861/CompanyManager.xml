@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <CompanyManager>
 	<CompanyType name="Private" class="net.sf.rails.game.PrivateCompany">
-		<Tradeable toCompany="yes" lowerPriceFactor="0.5" upperPriceFactor="2.0"/>
+		<Certificate certificateCount = "0" />
 	</CompanyType>
 	<CompanyType name="Minor" class="net.sf.rails.game.PrivateCompany">
 		<ShareUnit percentage="50"/>
@@ -31,6 +31,12 @@
 		
 	<!-- Note two supported colour specification formats:
 		RGB decimal with commas and RGB hexadecimal without commas -->
+	<Company name="TSR" longname="Tsarakoye Selo Railway" type="Private" />
+	<Company name="BSSC" longname="Black Sea Shipping Company" type="Private" />
+	<Company name="MYR" longname="Moscow Yaroslavl Railway" type="Private" />
+	<Company name="MRR" longname="Moscow Ryazan Railway" type="Private" />
+	<Company name="WVR" longname="Warsaw Vienna Railway" type="Private" />
+	
 	<Company name="GR" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
 	</Company>
 	<Company name="NW" longname="YY" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
@@ -95,12 +101,14 @@
 	<Company name="E" longname="YY" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
 		<Home hex="P3" />
 	</Company>
-
-	<StartPacket roundClass="net.sf.rails.game.specific._1861.StartRound_1861">
-		<Item name="Tsarakoye Selo Railway" type="Private" minBid="20" faceValue="30" revenue="10" />
-		<Item name="Black Sea Shipping Company" type="Private" minBid="30" faceValue="45" revenue="15" />
-		<Item name="Moscow Yaroslavl Railway" type="Private" minBid="40" faceValue="60" revenue="20" />
-		<Item name="Moscow Ryazan Railway" type="Private" minBid="50" faceValue="75" revenue="25" />
-		<Item name="Warsaw Vienna Railway" type="Private" minBid="60" faceValue="90" revenue="30" />
+	
+	<StartPacket name="sellPrivates" roundClass="net.sf.rails.game.specific._1880.StartRound_Privates_1880">
+		<Bidding initial="0" minimum="0" increment="5"/>
+		<Item name="TSR" type="Private" minBid="20" basePrice="5" noBidsReaction="ReduceAndRebid" />
+		<Item name="BSSC" type="Private" minBid="30" basePrice="10" noBidsReaction="ReduceAndRebid" />
+		<Item name="MYR" type="Private" minBid="40" basePrice="25" noBidsReaction="ReduceAndRebid"/>
+		<Item name="MRR" type="Private" minBid="50" basePrice="45" noBidsReaction="ReduceAndRebid"/>
+		<Item name="WVR" type="Private" minBid="60" basePrice="70" noBidsReaction="ReduceAndRebid"/>
+		<Item name="N" type="Minor" basePrice="100" noBidsReaction="ReduceAndRebid"/>
 	</StartPacket>
 </CompanyManager>
