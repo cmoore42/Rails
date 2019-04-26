@@ -1,5 +1,4 @@
 <Map tileOrientation="NS" letterOrientation="horizontal" even="A">
-  <Image file="1861/MapImage.svg" x="6" y="5" scale="0.1632" />
   	<!-- 
   	Note: For purposes of the software there is an extra column
   	on the left side and row on the top. This shifts everything by
