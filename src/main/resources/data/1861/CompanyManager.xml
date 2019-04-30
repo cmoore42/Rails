@@ -18,9 +18,9 @@
 		<ShareUnit percentage="10"/>
         <BaseTokens>
 			<!-- HomeBase lay options: "whenStarted", "whenFloated", "firstOR" (default) -->
-`		    <HomeBase lay="firstOR"/>
+`		    <HomeBase lay="whenStarted"/>
 			<!-- LayCost methods: only "sequence" (1830 style) implemented so far (default) -->
-	        <LayCost method="sequence" cost="0,40"/>
+	        <LayCost method="distance" cost="20,40"/>
         </BaseTokens>
 		<Certificate type="President" shares="2"/>
 		<Certificate shares="1" number="8"/>
@@ -37,68 +37,68 @@
 	<Company name="MRR" longname="Moscow Ryazan Railway" type="Private" basePrice="75" revenue="25"/>
 	<Company name="WVR" longname="Warsaw Vienna Railway" type="Private" basePrice="90" revenue="30"/>
 	
-	<Company name="GRR" longname="Grand Russian Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="GRR" longname="Grand Russian Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="EE282C">
 	</Company>
-	<Company name="NW" longname="Northwestern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="NW" longname="Northwestern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="231F20">
 	</Company>
-	<Company name="SW" longname="Southwestern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="SW" longname="Southwestern Railway" type="Public" tokens="3" fgColour="000000" bgColour="F5ED22">
 	</Company>
-	<Company name="SE" longname="Southeastern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="SE" longname="Southeastern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="9C2E92">
 	</Company>
-	<Company name="MK" longname="Moscow &amp; Kazan Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="MK" longname="Moscow &amp; Kazan Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="9C5424">
 	</Company>
-	<Company name="MVR" longname="Moscow, Vindava &amp; Rybinsk Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="MVR" longname="Moscow, Vindava &amp; Rybinsk Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="70BF45">
 	</Company>
-	<Company name="MKV" longname="Moscow, Kiev &amp; Voronezh Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="MKV" longname="Moscow, Kiev &amp; Voronezh Railway" type="Public" tokens="3" fgColour="000000" bgColour="B5BF90">
 	</Company>
-	<Company name="MKN" longname="Moscow, Kursk &amp; Nizhnii Novgorod Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="MKN" longname="Moscow, Kursk &amp; Nizhnii Novgorod Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="1D8FCC">
 	</Company>
-	<Company name="N" longname="Nikolaev Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="N" longname="Nikolaev Railway" type="Minor" tokens="1" fgColour="000000" bgColour="E7E7E8">
 		<Home hex="H9" />
 	</Company>
-	<Company name="StP-W" longname="St. Petersburg-Warsas" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="StP-W" longname="St. Petersburg-Warsas" type="Minor" tokens="1" fgColour="255,255,255" bgColour="2696D3">
 		<Home hex="E2" />
 	</Company>
-	<Company name="M-NN" longname="Moscow-Nizhnii Novgorod" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="M-NN" longname="Moscow-Nizhnii Novgorod" type="Minor" tokens="1" fgColour="255,255,255" bgColour="F68E1E">
 		<Home hex="H9" />
 	</Company>
-	<Company name="R-O" longname="Riga-Orel Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="R-O" longname="Riga-Orel Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="A30A77">
 		<Home hex="B5" />
 	</Company>
-	<Company name="O-K" longname="Odessa-Kiev Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="O-K" longname="Odessa-Kiev Railway" type="Minor" tokens="1" fgColour="000000" bgColour="989BA0">
 		<Home hex="D21" />
 	</Company>
-	<Company name="M-K" longname="Moscow-Kursk" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="M-K" longname="Moscow-Kursk" type="Minor" tokens="1" fgColour="000000" bgColour="F9C3DA">
 		<Home hex="H9" />
 	</Company>
-	<Company name="K-K" longname="Kiev-Kursk Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="K-K" longname="Kiev-Kursk Railway" type="Minor" tokens="1" fgColour="000000" bgColour="FDE802">
 		<Home hex="D15" />
 	</Company>
-	<Company name="M-V" longname="Moscow-Voronezh Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="M-V" longname="Moscow-Voronezh Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="9B5624">
 		<Home hex="I14" />
 	</Company>
-	<Company name="K-B" longname="Kiev-Brest Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="K-B" longname="Kiev-Brest Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="EE1D26">
 		<Home hex="D15" />
 	</Company>
-	<Company name="K-R" longname="Kharkov-Rostov Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="K-R" longname="Kharkov-Rostov Railway" type="Minor" tokens="1" fgColour="000000" bgColour="ACD370">
 		<Home hex="G16" />
 	</Company>
-	<Company name="M-B" longname="Moscow-Brest Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="M-B" longname="Moscow-Brest Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="1CB27F">
 		<Home hex="E10" />
 	</Company>
-	<Company name="D" longname="Donetsk Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="D" longname="Donetsk Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="231F20">
 		<Home hex="H19" />
 	</Company>
-	<Company name="V" longname="Vladikavkaz Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="V" longname="Vladikavkaz Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="9B5624">
 		<Home hex="I20" />
 	</Company>
-	<Company name="T-R" longname="Tsaritsyn-Riga Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="T-R" longname="Tsaritsyn-Riga Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="EE1F25">
 		<Home hex="K18" />
 	</Company>
-	<Company name="S-V" longname="Samara-Vyazma Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="S-V" longname="Samara-Vyazma Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="186DB5">
 		<Home hex="N11" />
 	</Company>
-	<Company name="E" longname="Ekaterinin Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="220,0,0">
+	<Company name="E" longname="Ekaterinin Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="905A8F">
 		<Home hex="Q4" />
 	</Company>
 	
@@ -112,5 +112,9 @@
 		<!--  
 		<Item name="N" type="Minor" minBid="100" noBidsReaction="RunOperatingRound"/>
 		-->
+	</StartPacket>
+	<StartPacket name="auctionMinors" roundClass="net.sf.rails.game.specific._1861.StartRoundMinors_1861">
+		<Bidding initial="100" increment="5"/>
+		<Item name="N" type="Minor" minBid="100" noBidsReaction="RunOperatingRound"/>
 	</StartPacket>
 </CompanyManager>
