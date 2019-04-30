@@ -191,7 +191,7 @@ public class StockRound extends Round {
     // StockRound: setPossibleActions
     
     // overridden by:
-    // StockRound 1837, 18EU
+    // StockRound 1837, 18EU, 1861
     protected void setGameSpecificActions() {
 
     }

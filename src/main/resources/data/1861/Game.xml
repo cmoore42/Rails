@@ -19,7 +19,8 @@
 			<PlayerShareLimit percentage="60">
 			</PlayerShareLimit>			
 			<BankPoolLimit percentage="50"/>
-			<StockRound sequence="SellBuyOrBuySell">
+			<StockRound class="net.sf.rails.game.specific._1861.StockRound_1861"
+				sequence="sellBuy">
 				<NoSaleInFirstSR/>
 			</StockRound>
 			<OperatingRound class="net.sf.rails.game.OperatingRound">

@@ -5,7 +5,7 @@
 	</CompanyType>
 	<CompanyType name="Minor" class="net.sf.rails.game.specific._1861.MinorCompany_1861">
 		<ShareUnit percentage="100"/>
-		<Certificate type="President" shares="1"/>
+		<Certificate shares="1"/>
 		<BaseTokens>
 			<HomeBase lay="whenStarted"/>
 		</BaseTokens>
@@ -37,7 +37,7 @@
 	<Company name="WVR" longname="Warsaw Vienna Railway" type="Private" basePrice="90" revenue="30"/>
 	
 	<!--  Minor Companies -->
-	<Company name="N" longname="Nikolaev Railway" type="Minor" tokens="1" fgColour="000000" bgColour="E7E7E8">
+	<Company name="N" longname="Nikolaev Railway" type="Minor" tokens="1" available="true" fgColour="000000" bgColour="E7E7E8">
 		<Home hex="H9" />
 	</Company>
 	<Company name="StP-W" longname="St. Petersburg-Warsas" type="Minor" tokens="1" fgColour="255,255,255" bgColour="2696D3">

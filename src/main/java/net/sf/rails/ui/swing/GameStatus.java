@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+import rails.game.action.AuctionCompany;
 import rails.game.action.BuyCertificate;
 import rails.game.action.NullAction;
 import rails.game.action.PossibleAction;
@@ -954,6 +955,15 @@ public class GameStatus extends GridPanel implements ActionListener {
                             setTreasuryCertButton(index, true, bCert);
                         }
                     }
+                }
+                
+                List<AuctionCompany> auctionableCompanies = possibleActions.getType(AuctionCompany.class);
+                if (auctionableCompanies != null) {
+                	for (AuctionCompany a : auctionableCompanies) {
+                		company = a.getCompany();
+                		index = company.getPublicNumber();
+                		setIPOCertButton(index, true, a);
+                	}
                 }
 
                 List<SellShares> sellableShares =
