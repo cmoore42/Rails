@@ -17,6 +17,14 @@ public class GameManager_1861 extends GameManager {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/* For 1861, the very first stock round must start with auctioning minor company N */
+	@Override
+	protected void startStockRound() {
+        StockRound sr = createRound(stockRoundClass, "SR_" + srNumber.value());
+        srNumber.add(1);
+        sr.start();
+    }
+	
 	protected void startMergerRound() {
 		MergerRound_1861 mr = (MergerRound_1861) createRound(mergerRoundClass, "MR_" + mrNumber.value());
         mrNumber.add(1);

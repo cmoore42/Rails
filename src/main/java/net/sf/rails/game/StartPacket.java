@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sf.rails.common.parser.ConfigurationException;
 import net.sf.rails.common.parser.Tag;
+import net.sf.rails.game.StartItem.NoBidsReaction;
 import net.sf.rails.util.Util;
 
 import org.slf4j.Logger;
@@ -91,6 +92,9 @@ public class StartPacket extends RailsAbstractItem {
             if (row > 0) item.setRow(row);
             int column = itemTag.getAttributeAsInteger("column", 0);
             if (column > 0) item.setColumn(column);
+            if (itemTag.getAttributeAsString("noBidsReaction", "").equals("ReduceAndRebid")) {
+            	item.setNoBidsReaction(NoBidsReaction.REDUCE_AND_REBID);
+            }
 
             // Check if there is another certificate
             List<Tag> subItemTags = itemTag.getChildren("SubItem");
