@@ -29,30 +29,14 @@
 	</CompanyType>
 
 		
-	<!-- Note two supported colour specification formats:
-		RGB decimal with commas and RGB hexadecimal without commas -->
+	<!-- Private Companies -->
 	<Company name="TSR" longname="Tsarakoye Selo Railway" type="Private" basePrice="30" revenue="10"/>
 	<Company name="BSSC" longname="Black Sea Shipping Company" type="Private" basePrice="45" revenue="15" />
 	<Company name="MYR" longname="Moscow Yaroslavl Railway" type="Private" basePrice="60" revenue="20"/>
 	<Company name="MRR" longname="Moscow Ryazan Railway" type="Private" basePrice="75" revenue="25"/>
 	<Company name="WVR" longname="Warsaw Vienna Railway" type="Private" basePrice="90" revenue="30"/>
 	
-	<Company name="GRR" longname="Grand Russian Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="EE282C">
-	</Company>
-	<Company name="NW" longname="Northwestern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="231F20">
-	</Company>
-	<Company name="SW" longname="Southwestern Railway" type="Public" tokens="3" fgColour="000000" bgColour="F5ED22">
-	</Company>
-	<Company name="SE" longname="Southeastern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="9C2E92">
-	</Company>
-	<Company name="MK" longname="Moscow &amp; Kazan Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="9C5424">
-	</Company>
-	<Company name="MVR" longname="Moscow, Vindava &amp; Rybinsk Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="70BF45">
-	</Company>
-	<Company name="MKV" longname="Moscow, Kiev &amp; Voronezh Railway" type="Public" tokens="3" fgColour="000000" bgColour="B5BF90">
-	</Company>
-	<Company name="MKN" longname="Moscow, Kursk &amp; Nizhnii Novgorod Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="1D8FCC">
-	</Company>
+	<!--  Minor Companies -->
 	<Company name="N" longname="Nikolaev Railway" type="Minor" tokens="1" fgColour="000000" bgColour="E7E7E8">
 		<Home hex="H9" />
 	</Company>
@@ -102,19 +86,32 @@
 		<Home hex="Q4" />
 	</Company>
 	
-	<StartPacket name="sellPrivates" roundClass="net.sf.rails.game.specific._1880.StartRound_Privates_1880">
+	<!--  Public Companies -->
+	
+	<Company name="GRR" longname="Grand Russian Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="EE282C">
+	</Company>
+	<Company name="NW" longname="Northwestern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="231F20">
+	</Company>
+	<Company name="SW" longname="Southwestern Railway" type="Public" tokens="3" fgColour="000000" bgColour="F5ED22">
+	</Company>
+	<Company name="SE" longname="Southeastern Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="9C2E92">
+	</Company>
+	<Company name="MK" longname="Moscow &amp; Kazan Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="9C5424">
+	</Company>
+	<Company name="MVR" longname="Moscow, Vindava &amp; Rybinsk Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="70BF45">
+	</Company>
+	<Company name="MKV" longname="Moscow, Kiev &amp; Voronezh Railway" type="Public" tokens="3" fgColour="000000" bgColour="B5BF90">
+	</Company>
+	<Company name="MKN" longname="Moscow, Kursk &amp; Nizhnii Novgorod Railway" type="Public" tokens="3" fgColour="255,255,255" bgColour="1D8FCC">
+	</Company>
+
+	
+	<StartPacket name="sellPrivates" roundClass="net.sf.rails.game.specific._1861.StartRound_1861">
 		<Bidding initial="0" minimum="0" increment="5"/>
-		<Item name="TSR" type="Private" minBid="20" basePrice="5" noBidsReaction="ReduceAndRebid" />
-		<Item name="BSSC" type="Private" minBid="30" basePrice="10" noBidsReaction="ReduceAndRebid" />
-		<Item name="MYR" type="Private" minBid="40" basePrice="25" noBidsReaction="ReduceAndRebid"/>
-		<Item name="MRR" type="Private" minBid="50" basePrice="45" noBidsReaction="ReduceAndRebid"/>
-		<Item name="WVR" type="Private" minBid="60" basePrice="70" noBidsReaction="ReduceAndRebid"/>
-		<!--  
-		<Item name="N" type="Minor" minBid="100" noBidsReaction="RunOperatingRound"/>
-		-->
-	</StartPacket>
-	<StartPacket name="auctionMinors" roundClass="net.sf.rails.game.specific._1861.StartRoundMinors_1861">
-		<Bidding initial="100" increment="5"/>
-		<Item name="N" type="Minor" minBid="100" noBidsReaction="RunOperatingRound"/>
+		<Item name="TSR" type="Private" minBid="20" basePrice="20" noBidsReaction="ReduceAndRebid" />
+		<Item name="BSSC" type="Private" minBid="30" basePrice="30" noBidsReaction="ReduceAndRebid" />
+		<Item name="MYR" type="Private" minBid="40" basePrice="40" noBidsReaction="ReduceAndRebid"/>
+		<Item name="MRR" type="Private" minBid="50" basePrice="50" noBidsReaction="ReduceAndRebid"/>
+		<Item name="WVR" type="Private" minBid="60" basePrice="60" noBidsReaction="ReduceAndRebid"/>
 	</StartPacket>
 </CompanyManager>
