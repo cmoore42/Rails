@@ -22,8 +22,8 @@
 			<!-- LayCost methods: only "sequence" (1830 style) implemented so far (default) -->
 	        <LayCost method="distance" cost="20,40"/>
         </BaseTokens>
-		<Certificate type="President" shares="2"/>
-		<Certificate shares="1" number="8"/>
+		<Certificate type="President" shares="2" available="false"/>
+		<Certificate shares="1" number="8" available="false"/>
 		<Trains limit="4,3,2"/>
         <CanUseSpecialProperties/>
 	</CompanyType>
@@ -83,22 +83,22 @@
 	<Company name="K-R" longname="Kharkov-Rostov Railway" type="Minor" tokens="1" fgColour="000000" bgColour="ACD370">
 		<Home hex="G16" />
 	</Company>
-	<Company name="M-B" longname="Moscow-Brest Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="1CB27F">
+	<Company name="M-B" longname="Moscow-Brest Railway" type="Minor" tokens="1" available="false" fgColour="255,255,255" bgColour="1CB27F">
 		<Home hex="E10" />
 	</Company>
-	<Company name="D" longname="Donetsk Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="231F20">
+	<Company name="D" longname="Donetsk Railway" type="Minor" tokens="1" available="false" fgColour="255,255,255" bgColour="231F20">
 		<Home hex="H19" />
 	</Company>
-	<Company name="V" longname="Vladikavkaz Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="9B5624">
+	<Company name="V" longname="Vladikavkaz Railway" type="Minor" tokens="1" available="false" fgColour="255,255,255" bgColour="9B5624">
 		<Home hex="I20" />
 	</Company>
-	<Company name="T-R" longname="Tsaritsyn-Riga Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="EE1F25">
+	<Company name="T-R" longname="Tsaritsyn-Riga Railway" type="Minor" tokens="1" available="false" fgColour="255,255,255" bgColour="EE1F25">
 		<Home hex="K18" />
 	</Company>
-	<Company name="S-V" longname="Samara-Vyazma Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="186DB5">
+	<Company name="S-V" longname="Samara-Vyazma Railway" type="Minor" tokens="1" available="false" fgColour="255,255,255" bgColour="186DB5">
 		<Home hex="N11" />
 	</Company>
-	<Company name="E" longname="Ekaterinin Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="905A8F">
+	<Company name="E" longname="Ekaterinin Railway" type="Minor" tokens="1" available="false" fgColour="255,255,255" bgColour="905A8F">
 		<Home hex="Q4" />
 	</Company>
 	
