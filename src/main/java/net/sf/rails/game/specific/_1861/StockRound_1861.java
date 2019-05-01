@@ -2,12 +2,16 @@ package net.sf.rails.game.specific._1861;
 
 import java.util.List;
 
+import com.google.common.collect.ImmutableSortedSet;
+
 import net.sf.rails.common.LocalText;
 import net.sf.rails.common.ReportBuffer;
 import net.sf.rails.game.GameManager;
+import net.sf.rails.game.Phase;
 import net.sf.rails.game.PublicCompany;
 import net.sf.rails.game.financial.PublicCertificate;
 import net.sf.rails.game.financial.StockRound;
+import net.sf.rails.game.financial.StockSpace;
 import net.sf.rails.game.model.PortfolioModel;
 import net.sf.rails.game.state.Currency;
 import net.sf.rails.game.state.MoneyOwner;
@@ -52,10 +56,11 @@ public class StockRound_1861 extends StockRound {
 			return;
 		}
 		
+		/* If N has been sold then the other minors can be auctioned */	
 		List<PublicCompany> allCompanies = getRoot().getCompanyManager().getAllPublicCompanies();
 		for (PublicCompany c : allCompanies) {
-			if (!c.hasStarted()) {
-				possibleActions.add(new AuctionCompany(null));
+			if ((c instanceof MinorCompany_1861) && (!c.hasStarted())) {
+				possibleActions.add(new AuctionCompany(c));
 			}
 		}
     }
@@ -81,6 +86,30 @@ public class StockRound_1861 extends StockRound {
 			int cost=150;
 			MoneyOwner priceRecipient = company;
 			PortfolioModel from = ipo;
+			
+			/* Determine start space */
+			int startStockPrice = cost / 2;
+			if (startStockPrice > 135) {
+				startStockPrice = 135;
+			}
+
+			ImmutableSortedSet<StockSpace> stockSpaces = getRoot().getStockMarket().getStartSpaces();
+			StockSpace startSpace = null;
+			StockSpace previous = null;
+			for (StockSpace s : stockSpaces) {
+				if (s.getPrice() == startStockPrice) {
+					startSpace = s;
+					break;
+				}
+				if (s.getPrice() > startStockPrice) {
+					startSpace = previous;
+					break;
+				}
+				previous = s;
+			}
+			
+			company.start(startSpace);
+			company.setFloated();
 			
 			String costText = Currency.wire(currentPlayer, cost, priceRecipient);
 	        if (priceRecipient != from.getMoneyOwner()) {
