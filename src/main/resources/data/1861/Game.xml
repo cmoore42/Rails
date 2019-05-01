@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ComponentManager>
-	<Component name="GameManager" class="net.sf.rails.game.GameManager">
+	<Component name="GameManager" class="net.sf.rails.game.specific._1861.GameManager_1861">
 		<Game name="1861"/>
 		<!-- GAME OPTIONS must have:
 			- a name, which must also exist as an entry in LocalText.properties,

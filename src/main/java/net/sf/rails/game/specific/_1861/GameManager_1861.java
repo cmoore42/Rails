@@ -9,26 +9,56 @@ import net.sf.rails.game.state.IntegerState;
 
 public class GameManager_1861 extends GameManager {
 	protected Class<? extends Round> mergerRoundClass = MergerRound_1861.class;
-    protected final IntegerState mrNumber = IntegerState.create(this, "mrNumber");
+    protected final IntegerState mrMajorNumber = IntegerState.create(this, "mrMajorNumber", 0);
+    protected final IntegerState mrMinorNumber = IntegerState.create(this,  "mrMinorNumber", 2);
 
 
 	public GameManager_1861(RailsRoot parent, String id) {
 		super(parent, id);
-		// TODO Auto-generated constructor stub
 	}
 	
-	/* For 1861, the very first stock round must start with auctioning minor company N */
-	@Override
-	protected void startStockRound() {
-        StockRound sr = createRound(stockRoundClass, "SR_" + srNumber.value());
-        srNumber.add(1);
-        sr.start();
-    }
-	
 	protected void startMergerRound() {
-		MergerRound_1861 mr = (MergerRound_1861) createRound(mergerRoundClass, "MR_" + mrNumber.value());
-        mrNumber.add(1);
+		if (mrMinorNumber.value() == 2) {
+			mrMajorNumber.add(1);
+			mrMinorNumber.set(1);
+		} else {
+			mrMinorNumber.add(1);
+		}
+		MergerRound_1861 mr = (MergerRound_1861) createRound(mergerRoundClass, 
+				"MR_" + mrMajorNumber.value() + "." + mrMinorNumber.value());
+
         mr.start();
     }
+	
+	@Override
+	public void nextRound(Round round) {
+		if (round instanceof OperatingRound) {
+            if (gameOverPending.value() && !gameEndsAfterSetOfORs) {
+
+                finishGame();
+
+            } else if (relativeORNumber.add(1) <= numOfORs.value()) {
+                // There will be another OR
+                startOperatingRound(true);
+            } else if (getRoot().getCompanyManager().getNextUnfinishedStartPacket() !=null) {
+               beginStartRound();
+            } else {
+                if (gameOverPending.value() && gameEndsAfterSetOfORs) {
+                    finishGame();
+                } else {
+                    ((OperatingRound)round).checkForeignSales();
+                    startMergerRound();
+                }
+            }
+		} else if (round instanceof MergerRound_1861) {
+			if (mrMinorNumber.value() == 2) {
+				startStockRound();
+			} else {
+				startOperatingRound(true);
+			}
+		} else {
+			super.nextRound(round);
+		}
+	}
 
 }
