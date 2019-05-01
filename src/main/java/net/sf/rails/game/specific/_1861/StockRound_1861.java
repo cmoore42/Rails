@@ -8,6 +8,7 @@ import net.sf.rails.common.LocalText;
 import net.sf.rails.common.ReportBuffer;
 import net.sf.rails.game.GameManager;
 import net.sf.rails.game.Phase;
+import net.sf.rails.game.Player;
 import net.sf.rails.game.PublicCompany;
 import net.sf.rails.game.financial.PublicCertificate;
 import net.sf.rails.game.financial.StockRound;
@@ -68,27 +69,34 @@ public class StockRound_1861 extends StockRound {
 	@Override
 	protected boolean processGameSpecificAction(PossibleAction action) {
 		if (action instanceof AuctionCompany) {
-			/* This needs to implement the auction of a minor company. 
-			 * For testing purposes we'll just sell the company to the 
-			 * current player for R150
-			 */
 			AuctionCompany auctionAction = (AuctionCompany) action;
 			PublicCompany company = auctionAction.getCompany();
 			PortfolioModel ipo = bank.getIpo().getPortfolioModel();
 			PublicCertificate cert = ipo.findCertificate(company,  false);
-			
+					
 			if (cert == null) {
 	            log.error("Cannot find cert");
-	        } else {
-	        	cert.moveTo(currentPlayer);
-	        }
+	            return(false);
+	        } 
 			
-			int cost=150;
-			MoneyOwner priceRecipient = company;
-			PortfolioModel from = ipo;
+			/* This needs to implement the auction of a minor company. 
+			 * For testing purposes we'll just sell the company to the 
+			 * current player for R150
+			 */
+			Player purchaser = currentPlayer;
+			int purchasePrice = 150;
 			
-			/* Determine start space */
-			int startStockPrice = cost / 2;
+			cert.moveTo(purchaser);
+			
+			/* 
+			 * Determine starting stock price
+			 * Stock price must be in the range of 50 to 135, and
+			 * must be a valid start space.
+			 * 
+			 * Stock price is the purchase price / 2 rounded down
+			 * to the nearest start space.
+			 */
+			int startStockPrice = purchasePrice / 2;
 			if (startStockPrice > 135) {
 				startStockPrice = 135;
 			}
@@ -108,15 +116,16 @@ public class StockRound_1861 extends StockRound {
 				previous = s;
 			}
 			
+			/* Start and float the company */
 			company.start(startSpace);
 			company.setFloated();
 			
-			String costText = Currency.wire(currentPlayer, cost, priceRecipient);
-	        if (priceRecipient != from.getMoneyOwner()) {
-	            ReportBuffer.add(this, LocalText.getText("PriceIsPaidTo",
-	                    costText,
-	                    priceRecipient.getId() ));
-	        }
+			/* Transfer money from the purchaser to the company */
+			String costText = Currency.wire(purchaser, purchasePrice, company);
+
+			ReportBuffer.add(this, LocalText.getText("PriceIsPaidTo",
+					costText,
+					company.getId() ));
 
 	        companyBoughtThisTurnWrapper.set(company);
 	        hasActed.set(true);
