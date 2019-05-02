@@ -48,6 +48,12 @@ public class StockRound_1861 extends StockRound {
 	}
 	
 	@Override
+	public void start() {
+		super.start();
+		raiseIfSoldOut = false;
+	}
+	
+	@Override
 	protected void setGameSpecificActions() {
 		PublicCompany firstMinor = getRoot().getCompanyManager().getPublicCompany("N");
 		

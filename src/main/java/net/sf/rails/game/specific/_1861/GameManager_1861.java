@@ -34,12 +34,10 @@ public class GameManager_1861 extends GameManager {
 	public void nextRound(Round round) {
 		if (round instanceof OperatingRound) {
             if (gameOverPending.value() && !gameEndsAfterSetOfORs) {
-
                 finishGame();
-
-            } else if (relativeORNumber.add(1) <= numOfORs.value()) {
+      /*      } else if (relativeORNumber.add(1) <= numOfORs.value()) {
                 // There will be another OR
-                startOperatingRound(true);
+                startOperatingRound(true); */
             } else if (getRoot().getCompanyManager().getNextUnfinishedStartPacket() !=null) {
                beginStartRound();
             } else {
@@ -54,6 +52,7 @@ public class GameManager_1861 extends GameManager {
 			if (mrMinorNumber.value() == 2) {
 				startStockRound();
 			} else {
+				relativeORNumber.add(1);
 				startOperatingRound(true);
 			}
 		} else {
