@@ -10,6 +10,7 @@
 			<HomeBase lay="whenStarted"/>
 		</BaseTokens>
 		<Trains limit="2,1"/>
+		<Payout split="always" />
 	</CompanyType>
 	<CompanyType name="Public" class="net.sf.rails.game.PublicCompany">
 		<CanBuyPrivates/>
@@ -26,6 +27,7 @@
 		<Certificate shares="1" number="8" available="false"/>
 		<Trains limit="4,3,2"/>
         <CanUseSpecialProperties/>
+        <Payout split="allowed" />
 	</CompanyType>
 
 		
@@ -38,13 +40,13 @@
 	
 	<!--  Minor Companies -->
 	<Company name="N" longname="Nikolaev Railway" type="Minor" tokens="1" available="true" fgColour="000000" bgColour="E7E7E8">
-		<Home hex="H9" />
+		<Home hex="H9" city="1"/>
 	</Company>
 	<Company name="StP-W" longname="St. Petersburg-Warsas" type="Minor" tokens="1" fgColour="255,255,255" bgColour="2696D3">
-		<Home hex="E2" />
+		<Home hex="E2" city="1" />
 	</Company>
 	<Company name="M-NN" longname="Moscow-Nizhnii Novgorod" type="Minor" tokens="1" fgColour="255,255,255" bgColour="F68E1E">
-		<Home hex="H9" />
+		<Home hex="H9" city="2" />
 	</Company>
 	<Company name="R-O" longname="Riga-Orel Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="A30A77">
 		<Home hex="B5" />
@@ -53,16 +55,16 @@
 		<Home hex="D21" />
 	</Company>
 	<Company name="M-K" longname="Moscow-Kursk" type="Minor" tokens="1" fgColour="000000" bgColour="F9C3DA">
-		<Home hex="H9" />
+		<Home hex="H9" city="3" />
 	</Company>
 	<Company name="K-K" longname="Kiev-Kursk Railway" type="Minor" tokens="1" fgColour="000000" bgColour="FDE802">
-		<Home hex="D15" />
+		<Home hex="D15" city="1" />
 	</Company>
 	<Company name="M-V" longname="Moscow-Voronezh Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="9B5624">
 		<Home hex="I14" />
 	</Company>
 	<Company name="K-B" longname="Kiev-Brest Railway" type="Minor" tokens="1" fgColour="255,255,255" bgColour="EE1D26">
-		<Home hex="D15" />
+		<Home hex="D15" city="3" />
 	</Company>
 	<Company name="K-R" longname="Kharkov-Rostov Railway" type="Minor" tokens="1" fgColour="000000" bgColour="ACD370">
 		<Home hex="G16" />

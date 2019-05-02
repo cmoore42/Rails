@@ -4,7 +4,6 @@ import net.sf.rails.common.LocalText;
 import net.sf.rails.common.ReportBuffer;
 import net.sf.rails.game.GameManager;
 import net.sf.rails.game.Round;
-import net.sf.rails.game.state.IntegerState;
 
 public class MergerRound_1861 extends Round {
 

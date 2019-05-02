@@ -23,7 +23,7 @@
 				sequence="sellBuy">
 				<NoSaleInFirstSR/>
 			</StockRound>
-			<OperatingRound class="net.sf.rails.game.OperatingRound">
+			<OperatingRound class="net.sf.rails.game.specific._1861.OperatingRound_1861">
             </OperatingRound>
 		</GameParameters>
 		<EndOfGame>
@@ -52,7 +52,7 @@
 		file="StockMarket.xml"/>
 	<Component name="TrainManager" class="net.sf.rails.game.TrainManager">
 		<Defaults>
-			<Reach base="stops" countTowns="yes"/>
+			<Reach base="stops" countTowns="no"/>
 			<!-- Alternative values: 
 				base="hexes" for H-trains as in 1826, 1849 etc.
 				countTowns="no" for all trains in 1841, 18EU, etc.,

@@ -13,7 +13,7 @@
 		<Upgrade id="7,8,9"/>
 	</Tile>
 	<Tile id="-1"><!-- 1 town -->
-		<Upgrade id="3,58"/>
+		<Upgrade id="3,4,58"/>
 	</Tile>
 	<Tile id="-10"><!-- 1 city -->
 		<Upgrade id="5,6,57"/>
@@ -26,14 +26,26 @@
 	</Tile>
 	
 	<!-- 	Map: Upgradeable to green -->
-	<Tile id="-61002"/> <!-- Moscow -->
-	<Tile id="-61003"/> <!-- Kiev -->
-	<Tile id="-61004"/> <!-- Nizhnii Novgrod -->
-	<Tile id="-61006"/> <!-- Shallow curve -->
-	<Tile id="-61009"/> <!-- Shallow curve with town -->
+	<Tile id="-61002"> <!-- Moscow -->
+		<Upgrade id="637" />
+	</Tile>
+	<Tile id="-61003"> <!-- Kiev -->
+		<Upgrade id="635" />
+	</Tile>
+	<Tile id="-61004"> <!-- Nizhnii Novgrod -->
+		<Upgrade id="207,208,622"/>
+	</Tile>
+	<Tile id="-61006">  <!-- Shallow curve -->
+		<Upgrade id="16,17,19,21,22,23,24,25,28,29,30,31" />
+	</Tile>
+	<Tile id="-61009"> <!-- Shallow curve with town -->
+		<Upgrade id="87,88,204"/>
+	</Tile>
 	
 	<!-- 	Map: Upgradeable to brown -->
-	<Tile id="-61007"/> <!-- St Petersburg -->
+	<Tile id="-61007"> <!-- St Petersburg -->
+		<Upgrade id="641" />
+	</Tile>
 	
 	<!--	Yellow Tiles -->
 	<Tile id="3">
@@ -160,19 +172,19 @@
 	</Tile>
 	<Tile id="87">
 		<Attributes quantity="2"/>
-		<!--  Need svg for 911 <Upgrade id="911"/> -->
+		<Upgrade id="911"/>
 	</Tile>
 	<Tile id="88">
 		<Attributes quantity="2"/>
-		<!--  Need svg for 911 <Upgrade id="911"/> -->
+		<Upgrade id="911"/>
 	</Tile>
 	<Tile id="204">
 		<Attributes quantity="2"/>
-		<!--  Need svg for 911 <Upgrade id="911"/> -->
+		<Upgrade id="911"/>
 	</Tile>
 	<Tile id="207">
 		<Attributes quantity="5"/>
-		<Upgrade id="623"/><!-- Also AOR -->
+		<Upgrade id="623,801"/>
 	</Tile>
 	<Tile id="208">
 		<Attributes quantity="2"/>
@@ -197,11 +209,11 @@
 		<Attributes quantity="1"/>
 		<Upgrade id="44"/>
 	</Tile> 
-	<Tile id="635">
+	<Tile id="635"> <!-- Kiev -->
 		<Attributes quantity="1"/>
 		<Upgrade id="636"/>
 	</Tile>
-	<Tile id="637">
+	<Tile id="637"> <!--  Moscow -->
 		<Attributes quantity="1"/>
 		<Upgrade id="638"/>
 	</Tile>
@@ -241,18 +253,19 @@
 	<Tile id="611">
 		<Attributes quantity="3"/>
 	</Tile>
-	<Tile id="623">
+	<Tile id="623"> <!--  Kharkov -->
 		<Attributes quantity="1"/>
 		<Upgrade id="640"/>
 	</Tile>
-	<Tile id="636">
+	<Tile id="636"> <!-- Kiev -->
 		<Attributes quantity="1"/>
 	</Tile>
-	<Tile id="641">
+	<Tile id="641"> <!--  St Petersburg -->
 		<Attributes quantity="1"/>
 	</Tile>
-	<Tile id="638">
+	<Tile id="638"> <!-- Moscow -->
 		<Attributes quantity="1"/>
+		<Upgrade id="639" />
 	</Tile>
 	<Tile id="801">
 		<Attributes quantity="2"/>
