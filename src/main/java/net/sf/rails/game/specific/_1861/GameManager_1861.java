@@ -35,15 +35,12 @@ public class GameManager_1861 extends GameManager {
 		if (round instanceof OperatingRound) {
             if (gameOverPending.value() && !gameEndsAfterSetOfORs) {
                 finishGame();
-      /*      } else if (relativeORNumber.add(1) <= numOfORs.value()) {
-                // There will be another OR
-                startOperatingRound(true); */
             } else if (getRoot().getCompanyManager().getNextUnfinishedStartPacket() !=null) {
                beginStartRound();
             } else {
                 if (gameOverPending.value() && gameEndsAfterSetOfORs) {
                     finishGame();
-                } else {
+                } else if (getRoot().getPhaseManager().getCurrentPhasendex() >= 3){
                     ((OperatingRound)round).checkForeignSales();
                     startMergerRound();
                 }
