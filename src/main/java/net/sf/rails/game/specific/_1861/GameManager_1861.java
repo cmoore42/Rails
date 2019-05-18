@@ -4,7 +4,6 @@ import net.sf.rails.game.GameManager;
 import net.sf.rails.game.OperatingRound;
 import net.sf.rails.game.RailsRoot;
 import net.sf.rails.game.Round;
-import net.sf.rails.game.financial.StockRound;
 import net.sf.rails.game.state.IntegerState;
 
 public class GameManager_1861 extends GameManager {
@@ -41,11 +40,22 @@ public class GameManager_1861 extends GameManager {
                 if (gameOverPending.value() && gameEndsAfterSetOfORs) {
                     finishGame();
                 } else if (getRoot().getPhaseManager().getCurrentPhasendex() >= 3){
+                	/* 
+                	 * For 1861 - a merger round follows an operating round
+                	 * starting in Phase 3
+                	 */
                     ((OperatingRound)round).checkForeignSales();
                     startMergerRound();
+                } else {
+                	super.nextRound(round);
                 }
             }
 		} else if (round instanceof MergerRound_1861) {
+			/*
+			 * For 1861 - if this is the second merger round then the
+			 * next round is a stock round.  If it's the first merger round
+			 * then the next round is an operating round.
+			 */
 			if (mrMinorNumber.value() == 2) {
 				startStockRound();
 			} else {

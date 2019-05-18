@@ -160,6 +160,11 @@ public class MapHex extends RailsModel implements RailsOwner, Configurable {
     private List<Integer> tileCost;
 
     private String stopName;
+    
+    /**
+     * Used when upgrading tiles, for tiles that can only be
+     * upgraded by/to a particular PublicCompany.
+     */
     private String reservedForCompanyName = null;
     private PublicCompany reservedForCompany = null;
 
