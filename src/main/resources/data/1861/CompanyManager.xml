@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <CompanyManager>
 	<CompanyType name="Private" class="net.sf.rails.game.PrivateCompany">
-		<Certificate certificateCount = "0" />
 	</CompanyType>
-	<CompanyType name="Minor" class="net.sf.rails.game.specific._1861.MinorCompany_1861">
+	<CompanyType name="Minor" class="net.sf.rails.game.specific._1861.PublicCompany_1861">
 		<ShareUnit percentage="100"/>
-		<Certificate shares="1"/>
+		<Certificate type="President" shares="1"/>
 		<BaseTokens>
 			<HomeBase lay="whenStarted"/>
 		</BaseTokens>

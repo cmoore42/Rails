@@ -17,7 +17,9 @@ import net.sf.rails.game.model.PortfolioModel;
 import net.sf.rails.game.state.Currency;
 import net.sf.rails.game.state.MoneyOwner;
 import rails.game.action.AuctionCompany;
+import rails.game.action.BuyCertificate;
 import rails.game.action.PossibleAction;
+import rails.game.action.StartCompany;
 
 
 /**
@@ -32,10 +34,9 @@ import rails.game.action.PossibleAction;
  *   
  *   Auction a minor:
  *   In Phase 2, 10 minors are available to be auctioned.
- *   In Pases 3 and 4, 6 additional minors are available.
+ *   In Phases 3 and 4, 6 additional minors are available.
  *   Minimal initial bid is R100
  *   Bid increment is R5
- *   The amount paid is for the Director's share, so for 20% ownership
  *   Stock price set at price paid / 2
  *   
  *   Note:  The first minor (N) MUST be auctioned first.  After N is 
@@ -53,27 +54,140 @@ public class StockRound_1861 extends StockRound {
 		raiseIfSoldOut = false;
 	}
 	
+    @Override
+    public void setBuyableCerts() {
+
+        super.setBuyableCerts();
+        
+        /*
+        PortfolioModel ipo = bank.getIpo().getPortfolioModel();
+        PublicCompany firstMinor = getRoot().getCompanyManager().getPublicCompany("N");
+        
+        // TODO:  Set the price
+        int price = 150;
+        
+        if (!firstMinor.hasStarted()) {
+        	possibleActions.add(new BuyCertificate(firstMinor,
+                    1,
+                    ipo.getParent(), price, 1));
+        }
+        */
+		
+    }
+    
+    /*
+     * The game-wide limit on share ownership doesn't apply to minor
+     * companies.  A Player can own all or nothing in a minor company.
+     * So as long as the minor hasn't started yet, a player can buy
+     * the single 100% share.
+     */
+    /*
+    @Override
+    public int maxAllowedNumberOfSharesToBuy(Player player,
+            PublicCompany company,
+            int shareSize) {
+    	
+    	if (company.getType().getId().equalsIgnoreCase("Minor")) {
+    		if (!company.hasStarted()) {
+    			return 1;
+    		}
+    	}
+    	
+    	return super.maxAllowedNumberOfSharesToBuy(player, company, shareSize);
+    }
+    */
+
 	@Override
 	protected void setGameSpecificActions() {
 		PublicCompany firstMinor = getRoot().getCompanyManager().getPublicCompany("N");
-		
-		/* If N hasn't been sold yet then it has to be sold first */
+		int price = 150;
+		int prices[] = {100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160,
+				165, 170, 175, 180, 185, 190, 195, 200, 205, 210, 215, 220, 225, 230, 235,
+				240, 245, 250, 255, 260, 265, 270};
+
+
+		/* If N hasn't started yet that's the only one that can start */
 		if (!firstMinor.hasStarted()) {
-			possibleActions.add(new AuctionCompany(firstMinor));;
+			possibleActions.add(new StartCompany(firstMinor, prices));
 			return;
 		}
 		
-		/* If N has been sold then the other minors can be auctioned */	
+		for (PublicCompany company : companyManager.getAllPublicCompanies()) {
+            if (company.getType().getId().equalsIgnoreCase("Minor")) {
+            	if (!company.hasStarted()) {
+            		possibleActions.add(new StartCompany(company, prices));
+            	}
+            }
+		}
+		
+		/*
 		List<PublicCompany> allCompanies = getRoot().getCompanyManager().getAllPublicCompanies();
 		for (PublicCompany c : allCompanies) {
 			if ((c instanceof MinorCompany_1861) && (!c.hasStarted())) {
 				possibleActions.add(new AuctionCompany(c));
 			}
 		}
+		*/
     }
-	
+
 	@Override
-	protected boolean processGameSpecificAction(PossibleAction action) {
+	public boolean startCompany(String playerName, StartCompany action) {
+		PublicCompany company = action.getCompany();
+		int pricePaid = action.getPrice();
+		
+		int startStockPrice = pricePaid / 2;
+		if (startStockPrice > 135) {
+			startStockPrice = 135;
+		}
+		
+		ImmutableSortedSet<StockSpace> stockSpaces = getRoot().getStockMarket().getStartSpaces();
+		StockSpace startSpace = null;
+		StockSpace previous = null;
+		for (StockSpace s : stockSpaces) {
+			if (s.getPrice() == startStockPrice) {
+				startSpace = s;
+				break;
+			}
+			if (s.getPrice() > startStockPrice) {
+				startSpace = previous;
+				break;
+			}
+			previous = s;
+		}
+		
+		/* Start and float the company */
+		company.start(startSpace);
+		company.setFloated();
+		
+		/* Transfer money from the purchaser to the company */
+		String costText = Currency.wire(action.getPlayer(), pricePaid, company);
+		
+		/* Transfer the certificate to the player */
+		PublicCertificate cert = ipo.findCertificate(company, true);
+		cert.moveTo(currentPlayer);
+
+		ReportBuffer.add(this, LocalText.getText("PriceIsPaidTo",
+				costText,
+				company.getId() ));
+		ReportBuffer.add(this, LocalText.getText("START_COMPANY_LOG",
+                playerName,
+                company.getId(),
+                bank.getCurrency().format(pricePaid), // TODO: Do this nicer
+                costText,
+                1,
+                cert.getShare(),
+                company.getId() ));
+
+        companyBoughtThisTurnWrapper.set(company);
+        hasActed.set(true);
+        setPriority();
+		
+		return true;
+		
+	}
+
+	
+	protected boolean oldProcessGameSpecificAction(PossibleAction action) {
 		if (action instanceof AuctionCompany) {
 			AuctionCompany auctionAction = (AuctionCompany) action;
 			PublicCompany company = auctionAction.getCompany();
