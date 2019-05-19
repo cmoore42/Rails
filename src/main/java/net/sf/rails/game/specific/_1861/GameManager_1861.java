@@ -39,7 +39,7 @@ public class GameManager_1861 extends GameManager {
             } else {
                 if (gameOverPending.value() && gameEndsAfterSetOfORs) {
                     finishGame();
-                } else if (getRoot().getPhaseManager().getCurrentPhasendex() >= 3){
+                } else if (getRoot().getPhaseManager().hasReachedPhase("3")){
                 	/* 
                 	 * For 1861 - a merger round follows an operating round
                 	 * starting in Phase 3
