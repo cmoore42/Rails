@@ -119,4 +119,7 @@
 		<Phase name="8">
 		</Phase>
 	</Component>
+	<Component name="RevenueManager" class="net.sf.rails.algorithms.RevenueManager">
+		<Modifier class="net.sf.rails.game.specific._1861.RevenueDynamicModifier_1861"/>
+	</Component>
 </ComponentManager>

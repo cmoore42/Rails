@@ -251,7 +251,7 @@ public class RevenueTrainRun implements Comparable<RevenueTrainRun> {
         return multiple;
     }
 
-    String prettyPrint(boolean includeDetails) {
+    public String prettyPrint(boolean includeDetails) {
         StringBuffer runPrettyPrint = new StringBuffer();
         runPrettyPrint.append(LocalText.getText("N_Train", train.toString()));
         runPrettyPrint.append(" = " + getRunValue());
