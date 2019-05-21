@@ -410,14 +410,10 @@ public class OperatingRound extends Round implements Observer {
             if (noMapMode) prepareNoMapActions();
         } else if (step == GameDef.OrStep.BUY_TRAIN) {
             setBuyableTrains();
-            // TODO Need route checking here.
-            // TEMPORARILY allow not buying a train if none owned
-            // if (!operatingCompany.getObject().mustOwnATrain()
-            // ||
-            // operatingCompany.getObject().getPortfolio().getNumberOfTrains() >
-            // 0) {
-            doneAllowed = true;
-            // }
+			if (!operatingCompany.value().mustOwnATrain()
+					|| operatingCompany.value().getPortfolioModel().getNumberOfTrains() > 0) {
+				doneAllowed = true;
+			}
             if (noMapMode && (operatingCompany.value().getLastRevenue() == 0))
                 prepareNoMapActions();
 

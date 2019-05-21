@@ -8,7 +8,7 @@
 		<BaseTokens>
 			<HomeBase lay="whenStarted"/>
 		</BaseTokens>
-		<Trains limit="2,1"/>
+		<Trains limit="2,1" mandatory="yes"/>
 		<Payout split="always" />
 	</CompanyType>
 	<CompanyType name="Public" class="net.sf.rails.game.PublicCompany">
@@ -24,7 +24,7 @@
         </BaseTokens>
 		<Certificate type="President" shares="2" available="false"/>
 		<Certificate shares="1" number="8" available="false"/>
-		<Trains limit="4,3,2"/>
+		<Trains limit="4,3,2" mandatory="yes"/>
         <CanUseSpecialProperties/>
         <Payout split="allowed" />
 	</CompanyType>
