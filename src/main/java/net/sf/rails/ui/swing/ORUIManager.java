@@ -996,6 +996,10 @@ public class ORUIManager implements DialogOwner {
                 b.append(" ").append(
                         LocalText.getText("YOU_MAY_ADD_CASH",
                                 gameUIManager.format(bTrain.getPresidentCashToAdd())));
+            } else if (bTrain.mustCompanyBorrowCash()) {
+            	b.append(" ").append(
+                        LocalText.getText("YOU_MUST_BORROW_CASH",
+                                gameUIManager.format(bTrain.getCompanyCashToBorrow())));
             }
 
             if (bTrain.getExtraMessage() != null) {

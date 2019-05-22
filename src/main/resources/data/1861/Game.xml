@@ -24,6 +24,7 @@
 				<NoSaleInFirstSR/>
 			</StockRound>
 			<OperatingRound class="net.sf.rails.game.specific._1861.OperatingRound_1861">
+				<EmergencyTrainBuying mustBorrowForTrain="yes" />
             </OperatingRound>
 		</GameParameters>
 		<EndOfGame>

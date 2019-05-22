@@ -2745,6 +2745,7 @@ public class OperatingRound extends Round implements Observer {
 
         String errMsg = null;
         int presidentCash = action.getPresidentCashToAdd();
+        int amountToBorrow;
         boolean presidentMustSellShares = false;
         int price = action.getPricePaid();
         int actualPresidentCash = 0;
@@ -2820,6 +2821,40 @@ public class OperatingRound extends Round implements Observer {
                             presidentCash - currentPlayer.getCashValue();
                 }
 
+            } else if (action.mustCompanyBorrowCash()) {
+            	/* Company must take out loans before buying */
+            	amountToBorrow = action.getCompanyCashToBorrow();
+            	int loanAmount = operatingCompany.value().getValuePerLoan();
+            	int interestPct = operatingCompany.value().getLoanInterestPct();
+            	int interestAmount = loanAmount * interestPct / 100;
+            	
+            	/* Round loan amount up to multiple of loanAmount */
+            	while ((amountToBorrow % loanAmount) != 0) {
+            		amountToBorrow += 5;
+            	}
+            	
+            	int numberOfNewLoans = amountToBorrow / loanAmount;
+            	
+            	/* Special case.  Because loan interest must immediately be paid,
+            	 * the amount we get from the loan is actually loanAmount - loanInterest.
+            	 * It's possible that numberOfLoans isn't big enough.
+            	 */
+            	if ((numberOfNewLoans * (loanAmount - interestAmount)) < amountToBorrow) {
+            		++numberOfNewLoans;
+            	}
+
+            	if (operatingCompany.value().getCurrentNumberOfLoans() + numberOfNewLoans
+            			> operatingCompany.value().getMaxNumberOfLoans()) {
+            		/* TODO:  Company must be nationalized */
+            	}
+            	
+            	{
+            		operatingCompany.value().addLoans(numberOfNewLoans);
+            		String paymentText =
+                            Currency.fromBank(numberOfNewLoans * (loanAmount - interestAmount),
+                            		operatingCompany.value());
+            		log.debug(paymentText);;
+            	}
             } else {
                 // No forced buy - does the company have the money?
                 if (price > operatingCompany.value().getCash()) {
@@ -3124,7 +3159,11 @@ public class OperatingRound extends Round implements Observer {
                     BuyTrain bt =
                             new BuyTrain(cheapestTrain,
                                     cheapestTrain.getOwner(), cheapestTrainCost);
-                    bt.setPresidentMustAddCash(cheapestTrainCost - cash);
+                    if (GameDef.getGameParameterAsBoolean(this,  GameDef.Parm.EMERGENCY_MUST_BORROW_FOR_TRAIN)) {
+                    	bt.setCompanyMustBorrow(cheapestTrainCost - cash);
+                    } else {
+                    	bt.setPresidentMustAddCash(cheapestTrainCost - cash);
+                    }
                     bt.setForcedBuyIfNoRoute(mustBuyTrain); // TODO TEMPORARY
                     possibleActions.add(bt);
                 } else {

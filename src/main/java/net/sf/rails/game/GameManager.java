@@ -277,6 +277,9 @@ public class GameManager extends RailsManager implements Configurable, Owner {
                     setGameParameter (GameDef.Parm.EMERGENCY_MAY_BUY_FROM_COMPANY,
                             emergencyTag.getAttributeAsBoolean("mayBuyFromCompany",
                                     GameDef.Parm.EMERGENCY_MAY_BUY_FROM_COMPANY.defaultValueAsBoolean()));
+                    setGameParameter (GameDef.Parm.EMERGENCY_MUST_BORROW_FOR_TRAIN,
+                    		emergencyTag.getAttributeAsBoolean("mustBorrowForTrain",
+                    				GameDef.Parm.EMERGENCY_MUST_BORROW_FOR_TRAIN.defaultValueAsBoolean()));
                 }
                 Tag revenueIncrementTag = orTag.getChild("RevenueIncrement");
                 if (revenueIncrementTag != null) {

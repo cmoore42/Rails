@@ -10,6 +10,7 @@
 		</BaseTokens>
 		<Trains limit="2,1" mandatory="yes"/>
 		<Payout split="always" />
+		<Loans number="2" value="50" interest="10" />
 	</CompanyType>
 	<CompanyType name="Public" class="net.sf.rails.game.PublicCompany">
 		<CanBuyPrivates/>
@@ -27,6 +28,7 @@
 		<Trains limit="4,3,2" mandatory="yes"/>
         <CanUseSpecialProperties/>
         <Payout split="allowed" />
+        <Loans number="5" value="50" interest="10" />
 	</CompanyType>
 
 		

@@ -39,6 +39,8 @@ public class BuyTrain extends PossibleORAction {
     private boolean presidentMustAddCash = false; // If buying from the bank
     private boolean presidentMayAddCash = false;  // If buying from a company
     private int presidentCashToAdd = 0;
+    private boolean companyMustBorrow = false;
+    private int companyCashToBorrow = 0;
 
     transient private SpecialTrainBuy specialProperty = null;
     private int specialPropertyId = 0;
@@ -85,6 +87,13 @@ public class BuyTrain extends PossibleORAction {
         return this;
     }
 
+    
+    public BuyTrain setCompanyMustBorrow(int amount) {
+    	companyMustBorrow = true;
+    	companyCashToBorrow = amount;
+    	return this;
+    }
+    
     public BuyTrain setPresidentMustAddCash(int amount) {
         presidentMustAddCash = true;
         presidentCashToAdd = amount;
@@ -175,9 +184,17 @@ public class BuyTrain extends PossibleORAction {
     public boolean mayPresidentAddCash() {
         return presidentMayAddCash;
     }
+    
+    public boolean mustCompanyBorrowCash() {
+    	return companyMustBorrow;
+    }
 
     public int getPresidentCashToAdd() {
         return presidentCashToAdd;
+    }
+    
+    public int getCompanyCashToBorrow() {
+    	return companyCashToBorrow;
     }
 
     public boolean isForcedBuyIfNoRoute() {
